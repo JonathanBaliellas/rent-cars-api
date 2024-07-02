@@ -1,3 +1,12 @@
 package br.gov.sp.fatec.domain.request;
 
-public record CarroRequest() {}
+import br.gov.sp.fatec.domain.enums.CarroStatus;
+import lombok.Data;
+
+@Data
+public class CarroRequest {
+    private String modelo;
+    private String marca;
+    private int ano;
+    private CarroStatus status;
+}
