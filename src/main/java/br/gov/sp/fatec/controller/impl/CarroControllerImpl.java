@@ -5,10 +5,11 @@ import br.gov.sp.fatec.domain.request.CarroRequest;
 import br.gov.sp.fatec.domain.request.CarroUpdateRequest;
 import br.gov.sp.fatec.domain.response.CarroResponse;
 import br.gov.sp.fatec.service.CarroService;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,27 +18,32 @@ public class CarroControllerImpl implements CarroController {
     private final CarroService carroService;
 
     @Override
-    public ResponseEntity<CarroResponse> save(CarroRequest carro) {
-        return null;
+    public ResponseEntity<CarroResponse> save(CarroRequest carroRequest) {
+        CarroResponse carroResponse = carroService.save(carroRequest);
+        return ResponseEntity.ok(carroResponse);
     }
 
     @Override
     public ResponseEntity<CarroResponse> findById(Long id) {
-        return null;
+        CarroResponse carroResponse = carroService.findById(id);
+        return ResponseEntity.ok(carroResponse);
     }
 
     @Override
     public ResponseEntity<List<CarroResponse>> findAll() {
-        return null;
+        List<CarroResponse> carros = carroService.findAll();
+        return ResponseEntity.ok(carros);
     }
 
     @Override
     public ResponseEntity<Void> updateById(Long id, CarroUpdateRequest request) {
-        return null;
+        carroService.updateById(id, request);
+        return ResponseEntity.ok().build();
     }
 
     @Override
     public ResponseEntity<Void> deleteById(Long id) {
-        return null;
+        carroService.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 }

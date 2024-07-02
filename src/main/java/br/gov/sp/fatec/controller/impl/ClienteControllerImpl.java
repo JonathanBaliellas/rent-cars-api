@@ -5,10 +5,11 @@ import br.gov.sp.fatec.domain.request.ClienteRequest;
 import br.gov.sp.fatec.domain.request.ClienteUpdateRequest;
 import br.gov.sp.fatec.domain.response.ClienteResponse;
 import br.gov.sp.fatec.service.ClienteService;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,27 +18,32 @@ public class ClienteControllerImpl implements ClienteController {
     private final ClienteService clienteService;
 
     @Override
-    public ResponseEntity<ClienteResponse> save(ClienteRequest cliente) {
-        return null;
+    public ResponseEntity<ClienteResponse> save(ClienteRequest clienteRequest) {
+        ClienteResponse clienteResponse = clienteService.save(clienteRequest);
+        return ResponseEntity.ok(clienteResponse);
     }
 
     @Override
     public ResponseEntity<ClienteResponse> findById(Long id) {
-        return null;
+        ClienteResponse clienteResponse = clienteService.findById(id);
+        return ResponseEntity.ok(clienteResponse);
     }
 
     @Override
     public ResponseEntity<List<ClienteResponse>> findAll() {
-        return null;
+        List<ClienteResponse> clientes = clienteService.findAll();
+        return ResponseEntity.ok(clientes);
     }
 
     @Override
     public ResponseEntity<Void> updateById(Long id, ClienteUpdateRequest request) {
-        return null;
+        clienteService.updateById(id, request);
+        return ResponseEntity.ok().build();
     }
 
     @Override
     public ResponseEntity<Void> deleteById(Long id) {
-        return null;
+        clienteService.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 }
