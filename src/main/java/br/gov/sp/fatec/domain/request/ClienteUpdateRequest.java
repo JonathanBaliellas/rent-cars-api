@@ -1,3 +1,9 @@
 package br.gov.sp.fatec.domain.request;
 
-public record ClienteUpdateRequest() {}
+import lombok.Data;
+
+@Data
+public class ClienteUpdateRequest {
+    private String nome;
+    private String telefone;
+}
